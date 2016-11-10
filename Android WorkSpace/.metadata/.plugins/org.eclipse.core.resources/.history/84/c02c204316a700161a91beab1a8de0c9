@@ -1,0 +1,40 @@
+package com.example.viewobject;
+
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+
+public class MainActivity extends ActionBarActivity implements OnClickListener{
+	
+	private TextView textView1;
+	private Button button1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    //按钮的单击事件方法
+	@Override
+	public void onClick(View v) {
+		// 在单击事件中，不断调整textView1中文本对齐方式
+		int value = textView1.getGravity() & 0x07;
+		if (value == Gravity.LEFT) {
+			textView1.setGravity(Gravity.CENTER_HORIZONTAL);
+		}
+		else if (value == Gravity.CENTER_HORIZONTAL) {
+			textView1.setGravity(Gravity.RIGHT);
+		}
+		else if (value == Gravity.RIGHT) {
+			textView1.setGravity(Gravity.LEFT);
+		}
+	}
+}
